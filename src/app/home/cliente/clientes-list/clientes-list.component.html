@@ -1,6 +1,6 @@
 <div class="button-container">
   <button mat-raised-button color="primary" style="width: 100%; border-radius: 2px; background-color: green;"
-    (click)="irParaNewProduto()">
+    (click)="irParaNewCliente()">
     <mat-icon>add</mat-icon>
     Adicionar Cliente
   </button>
@@ -10,21 +10,21 @@
     <tr>
       <th>ID</th>
       <th>Nome</th>
-      <th>Preço</th>
-      <th>Categoria</th>
-      <th>Quantidade em Estoque</th>
+      <th>Cidade</th>
+      <th>CNPJ</th>
+      <th>Ultima Compra</th>
       <th>Editar</th>
     </tr>
   </thead>
   <tbody>
-    @for(produto of produtos; track produto.id){
+    @for(cliente of clientes; track cliente.id){
     <tr>
-      <td>{{ produto.id }}</td>
-      <td>{{ produto.nome }}</td>
-      <td>{{ produto.preco}}</td>
-      <td>{{ produto.categoria }}</td>
-      <td>{{ produto.quantidadeEstoque }}</td>
-      <td><button mat-icon-button (click)="editarProduto(produto.id)">
+      <td>{{ cliente.id }}</td>
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.cidade}}</td>
+      <td>{{ cliente.cnpj }}</td>
+      <td>{{ cliente.ultimaCompra }}</td>
+      <td><button mat-icon-button (click)="editarCliente(cliente.id)">
           <mat-icon>edit</mat-icon>
         </button></td>
 

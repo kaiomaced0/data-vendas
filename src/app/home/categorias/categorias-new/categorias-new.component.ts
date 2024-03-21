@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 export class CategoriasNewComponent {
 
   constructor(private router: Router) {}
-  categorias = ['Categoria 1', 'Categoria 2', 'Categoria 3', 'Categoria 4', 'Categoria 5'];
 
   onSubmit(form: any) {
     console.log('Dados do Formulário:', form.value);

@@ -15,11 +15,9 @@ export class PagamentosListComponent {
 
   constructor(private router: Router) {}
 
-  produtos = [
-    { id: 1, nome: 'Produto 1', preco: 100.00, categoria: 'Categoria A', quantidadeEstoque: 10, imageUrl: "https://via.placeholder.com/220x250?text=Produto+1" },
-    { id: 2, nome: 'Produto 2', preco: 200.00, categoria: 'Categoria B', quantidadeEstoque: 20,
-    imageUrl: "https://via.placeholder.com/220x250?text=Produto+1"},
-    // Adicione mais produtos conforme necessário
+  pagamentos = [
+    { id: 1, cliente: 'Loja 2 - Joao', status: 'Concluido', ValorTotal: '5.000,00', ValorPago: '5.000,00', ValorFaltando: '0,00'},
+    { id: 2, cliente: 'Loja 2 - Joao', status: 'Parcial',   ValorTotal: '8.000,00', ValorPago: '2.000,00', ValorFaltando: '6.000,00'}
   ];
 
   irParaNewPagamentos() {

@@ -12,13 +12,13 @@ import { Router } from '@angular/router';
 })
 export class ClientesNewComponent {
   constructor(private router: Router) {}
-  categorias = ['Categoria 1', 'Categoria 2', 'Categoria 3', 'Categoria 4', 'Categoria 5'];
+  cidades = ['Palmas - TO', 'Paraiso - TO', 'Araguaina - TO'];
 
   onSubmit(form: any) {
     console.log('Dados do Formulário:', form.value);
     // Aqui você pode adicionar a lógica para salvar os dados do formulário
   }
-  adicionarProduto() {
+  adicionarCliente() {
     this.router.navigate(['/clientes']);
   }
 

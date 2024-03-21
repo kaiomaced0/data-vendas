@@ -16,17 +16,16 @@ export class ClientesListComponent {
 
   constructor(private router: Router) {}
 
-  produtos = [
-    { id: 1, nome: 'Produto 1', preco: 100.00, categoria: 'Categoria A', quantidadeEstoque: 10, imageUrl: "https://via.placeholder.com/220x250?text=Produto+1" },
-    { id: 2, nome: 'Produto 2', preco: 200.00, categoria: 'Categoria B', quantidadeEstoque: 20,
-    imageUrl: "https://via.placeholder.com/220x250?text=Produto+1"},
+  clientes = [
+    { id: 1, nome: 'Produto 1', cidade: 'Palmas - TO', ultimaCompra: '00/00/2024', cnpj: '00000000/0001-23'},
+    { id: 2, nome: 'Produto 2', cidade: 'Palmas - TO', ultimaCompra: '00/00/2024', cnpj: '00000000/0001-23'},
     // Adicione mais produtos conforme necessário
   ];
 
-  irParaNewProduto() {
+  irParaNewCliente() {
     this.router.navigate(['clientes/new']);
   }
-  editarProduto(produtoId: number) {
+  editarCliente(produtoId: number) {
     this.router.navigate(['clientes/edit']);
   }
 

@@ -8,23 +8,17 @@
 <table class="tabela-produtos">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Preço</th>
-      <th>Categoria</th>
-      <th>Quantidade em Estoque</th>
-      <th>Editar</th>
+      <th style="width: 15%;">ID</th>
+      <th style="width: 70%;">Nome</th>
+      <th style="width: 15%;">Editar</th>
     </tr>
   </thead>
   <tbody>
-    @for(produto of produtos; track produto.id){
+    @for(categoria of categorias; track categoria.id){
     <tr>
-      <td>{{ produto.id }}</td>
-      <td>{{ produto.nome }}</td>
-      <td>{{ produto.preco}}</td>
-      <td>{{ produto.categoria }}</td>
-      <td>{{ produto.quantidadeEstoque }}</td>
-      <td><button mat-icon-button (click)="editarCategorias(produto.id)">
+      <td>{{ categoria.id }}</td>
+      <td>{{ categoria.nome }}</td>
+      <td><button mat-icon-button (click)="editarCategorias(categoria.id)">
           <mat-icon>edit</mat-icon>
         </button></td>
 
