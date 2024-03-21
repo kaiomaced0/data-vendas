@@ -21,6 +21,24 @@ export class HomeComponent {
   telaClientes() {
     this.router.navigate(['clientes']);
   }
+  telaVendas() {
+    this.router.navigate(['vendas']);
+  }
+  telaPagamentos() {
+    this.router.navigate(['pagamentos']);
+  }
+  telaCategorias() {
+    this.router.navigate(['categorias']);
+  }
+  telaEstoques() {
+    this.router.navigate(['estoques']);
+  }
+  telaMarcas() {
+    this.router.navigate(['marcas']);
+  }
+  telaFornecedores() {
+    this.router.navigate(['fornecedores']);
+  }
 
   data: any;
   data2: any;

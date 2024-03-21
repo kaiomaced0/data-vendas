@@ -1,29 +1,28 @@
-.new-produto-form {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.new-produto-form form {
-  display: flex;
-  flex-direction: column;
-}
-
-.new-produto-form form label {
+.tabela-clientes {
+  background-color: #b0b5cc;
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 10px;
 }
 
-.new-produto-form form input, .new-produto-form form select {
+.tabela-clientes th, .tabela-clientes td {
+  border: 1px solid #5f5e5e;
   padding: 8px;
-  margin-top: 5px;
+  text-align: left;
 }
 
-.new-produto-form form button {
-  margin-top: 20px;
-  padding: 10px;
-  background-color: green;
-  color: white;
-  border: none;
-  cursor: pointer;
+.tabela-clientes th {
+  background-color: #f2f2f2;
+}
+
+.tabela-clientes mat-icon-button {
+  color: #757575; /* Cor mais suave para os ícones */
+  margin: 0 5px; /* Espaçamento ao redor dos ícones */
+}
+
+.tabela-clientes mat-icon-button:hover {
+  color: #333; /* Cor um pouco mais escura ao passar o mouse */
+}
+table {
+  width: 100%;
 }

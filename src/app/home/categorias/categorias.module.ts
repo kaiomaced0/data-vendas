@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MarcaRoutingModule } from './marca-routing.module';
+import { CategoriasRoutingModule } from './categorias-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    MarcaRoutingModule
+    CategoriasRoutingModule
   ]
 })
-export class MarcaModule { }
+export class CategoriasModule { }
