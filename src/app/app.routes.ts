@@ -11,6 +11,15 @@ export const routes: Routes = [
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       }
     ]
+  },
+  {
+    path: 'login',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+      }
+    ]
   }
 
 ];

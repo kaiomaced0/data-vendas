@@ -2,6 +2,9 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="visibleSidebar1 = true">
     <mat-icon>menu</mat-icon>
   </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with home icon" (click)="irParaHome()">
+    <mat-icon>home</mat-icon>
+  </button>
 
   <span class="example-spacer"></span>
 
@@ -13,13 +16,9 @@
   <!-- Menu de Configurações -->
   <mat-menu #personMenu="matMenu">
 
-    <button mat-menu-item >
+    <button mat-menu-item (click)="irParaConta()">
       <mat-icon>person</mat-icon>
       <span>Minha Conta</span>
-    </button>
-    <button mat-menu-item >
-      <mat-icon>person</mat-icon>
-      <span>Login</span>
     </button>
   </mat-menu>
 

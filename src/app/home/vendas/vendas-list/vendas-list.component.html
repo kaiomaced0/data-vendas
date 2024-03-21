@@ -1,1 +1,35 @@
-<p>vendas-list works!</p>
+<div class="button-container">
+  <button mat-raised-button color="primary" style="width: 100%; border-radius: 2px; background-color: green;"
+    (click)="irParaNewVenda()">
+    <mat-icon>add</mat-icon>
+    Adicionar Vendas
+  </button>
+</div>
+<table class="tabela-vendas">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Preço</th>
+      <th>Categoria</th>
+      <th>Quantidade em Estoque</th>
+      <th>Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(venda of Vendas; track venda.id){
+    <tr>
+      <td>{{ venda.id }}</td>
+      <td>{{ venda.nome }}</td>
+      <td>{{ venda.preco}}</td>
+      <td>{{ venda.categoria }}</td>
+      <td>{{ venda.quantidadeEstoque }}</td>
+      <td><button mat-icon-button (click)="editarVenda(venda.id)">
+          <mat-icon>edit</mat-icon>
+        </button></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>

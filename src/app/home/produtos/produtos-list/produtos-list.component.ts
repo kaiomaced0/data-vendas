@@ -28,9 +28,4 @@ export class ProdutosListComponent {
   editarProduto(produtoId: number) {
     this.router.navigate(['produtos/edit']);
   }
-
-  excluirProduto(produtoId: number) {
-    // Lógica para excluir o produto
-  }
-
 }

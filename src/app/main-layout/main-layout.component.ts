@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import {ButtonModule} from 'primeng/button';
 import {SidebarModule} from 'primeng/sidebar';
 import {MatIconModule} from '@angular/material/icon';
@@ -14,5 +14,14 @@ import {MatMenuModule} from '@angular/material/menu';
   styleUrl: './main-layout.component.css'
 })
 export class MainLayoutComponent {
+  constructor(private router: Router) {}
+
   visibleSidebar1!: boolean;
+
+  irParaHome() {
+    this.router.navigate(['']);
+  }
+  irParaConta() {
+    this.router.navigate(['conta']);
+  }
 }

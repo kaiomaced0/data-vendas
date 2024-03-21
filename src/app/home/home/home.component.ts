@@ -39,6 +39,12 @@ export class HomeComponent {
   telaFornecedores() {
     this.router.navigate(['fornecedores']);
   }
+  telaVisualizarAllProdutos() {
+    this.router.navigate(['produtos/all']);
+  }
+  telaNewVenda() {
+    this.router.navigate(['vendas/new']);
+  }
 
   data: any;
   data2: any;

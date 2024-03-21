@@ -1,0 +1,52 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Torna a altura do container igual à altura da viewport */
+  background-color: #333; /* Cor de fundo escura */
+}
+
+.login-form {
+  width: 50%;
+  max-width: 400px;
+  padding: 40px;
+  background-color: rgb(63, 60, 78);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color: #fff; /* Cor do texto branco para contraste */
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff; /* Cor de fundo para o botão */
+  color: #fff; /* Cor do texto branco para o botão */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+button:hover {
+  background-color: #0056b3; /* Cor de fundo do botão ao passar o mouse */
+}
+@media (max-width: 600px) {
+  .login-form {
+    width: 90%; /* Faz o formulário ocupar mais espaço em telas menores */
+  }
+}

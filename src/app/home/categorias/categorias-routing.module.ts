@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoriasListComponent } from './categorias-list/categorias-list.component';
+import { CategoriasNewComponent } from './categorias-new/categorias-new.component';
+import { CategoriasEditComponent } from './categorias-edit/categorias-edit.component';
+import { CategoriasViewComponent } from './categorias-view/categorias-view.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', component: CategoriasListComponent},
+  {path: 'new', component: CategoriasNewComponent},
+  {path: 'edit', component: CategoriasEditComponent},
+  {path: 'view', component: CategoriasViewComponent}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -75,6 +75,15 @@ const routes: Routes = [
         loadChildren: () => import('./fornecedor/fornecedor.module').then(m => m.FornecedorModule)
       },
     ]
+  },
+  {
+    path: 'conta',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./conta/conta.module').then(m => m.ContaModule)
+      },
+    ]
   }
 ];
 
