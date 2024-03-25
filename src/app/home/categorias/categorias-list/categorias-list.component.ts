@@ -17,8 +17,8 @@ export class CategoriasListComponent {
   constructor(private router: Router) {}
 
   categorias = [
-    { id: 1, nome: 'Produto 1'},
-    { id: 2, nome: 'Produto 2'},
+    { id: 1, nome: 'Categoria 1'},
+    { id: 2, nome: 'Categoria 2'},
   ];
 
   irParaNewCategorias() {

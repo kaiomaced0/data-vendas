@@ -16,9 +16,8 @@ export class VendasListComponent {
   constructor(private router: Router) {}
 
   Vendas = [
-    { id: 1, nome: 'Venda 1', preco: 100.00, categoria: 'Categoria A', quantidadeEstoque: 10, imageUrl: "https://via.placeholder.com/220x250?text=Venda+1" },
-    { id: 2, nome: 'Venda 2', preco: 200.00, categoria: 'Categoria B', quantidadeEstoque: 20,
-    imageUrl: "https://via.placeholder.com/220x250?text=Venda+1"},
+    { id: 1, data: '00/00/0000', valor: 5000.00, cliente: 'João joão', imageUrl: "https://via.placeholder.com/220x250?text=Venda+1" },
+    { id: 2, data: '00/00/0000', valor: 8000.00, cliente: 'João joão', imageUrl: "https://via.placeholder.com/220x250?text=Venda+1"},
     // Adicione mais Vendas conforme necessário
   ];
 

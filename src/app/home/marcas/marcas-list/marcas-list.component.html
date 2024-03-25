@@ -1,1 +1,29 @@
-<p>marcas-list works!</p>
+<div class="button-container">
+  <button mat-raised-button color="primary" style="width: 100%; border-radius: 2px; background-color: green;"
+    (click)="irParaNewMarca()">
+    <mat-icon>add</mat-icon>
+    Adicionar marca
+  </button>
+</div>
+<table class="tabela-clientes">
+  <thead>
+    <tr>
+      <th style="width: 15%;">ID</th>
+      <th style="width: 65%;">Nome</th>
+      <th style="width: 20%;">Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(marca of marcas; track marca.id){
+    <tr>
+      <td>{{ marca.id }}</td>
+      <td>{{ marca.nome }}</td>
+      <td><button mat-icon-button (click)="editarMarca(marca.id)">
+          <mat-icon>edit</mat-icon>
+        </button></td>
+
+    </tr>
+    }
+
+  </tbody>
+</table>

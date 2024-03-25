@@ -17,8 +17,8 @@ export class ClientesListComponent {
   constructor(private router: Router) {}
 
   clientes = [
-    { id: 1, nome: 'Produto 1', cidade: 'Palmas - TO', ultimaCompra: '00/00/2024', cnpj: '00000000/0001-23'},
-    { id: 2, nome: 'Produto 2', cidade: 'Palmas - TO', ultimaCompra: '00/00/2024', cnpj: '00000000/0001-23'},
+    { id: 1, nome: 'Cliente 1', cidade: 'Palmas - TO', ultimaCompra: '00/00/2024', cnpj: '00000000/0001-23'},
+    { id: 2, nome: 'Cliente 2', cidade: 'Palmas - TO', ultimaCompra: '00/00/2024', cnpj: '00000000/0001-23'},
     // Adicione mais produtos conforme necessário
   ];
 

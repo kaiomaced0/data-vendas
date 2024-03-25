@@ -1,1 +1,10 @@
-<p>view works!</p>
+<div class="produtos-home">
+  @for (produto of produtos; track produto.id){
+
+  <app-card-produto [id]="produto.id"
+    [imageUrl]="produto.imageUrl"
+    [title]="produto.title"
+    [price]="produto.price"
+    [stars]="produto.stars"/>
+  }
+</div>

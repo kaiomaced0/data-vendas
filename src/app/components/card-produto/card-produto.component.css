@@ -1,0 +1,84 @@
+.product-card {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.image{
+  align-items: center;
+  padding-top: 2px;
+}
+.imagem{
+  width: 220px;
+  height: 250px;
+
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.stars {
+  padding-left: 10px;
+}
+
+.title {
+  margin-bottom: 10px;
+  background-color: #eee;
+  width: 96%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 1px;
+}
+
+.price {
+  align-self: center;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+
+/* Media query para smartphones */
+@media (max-width: 600px) {
+  .imagem{
+    width: 132px;
+    height: 150px;
+
+  }
+  .product-card {
+    margin: 10px; /* Aumenta a margem ao redor do card para melhor espaçamento */
+  }
+
+  .card-top {
+    flex-direction: column; /* Empilha os elementos do topo verticalmente */
+    align-items: center; /* Centraliza os elementos do topo */
+  }
+
+  .buy-button {
+    width: 70%;
+    order: -1; /* Move as estrelas e o botão para o topo dentro do .card-top */
+  }
+  .like-button{
+    width: 30%;
+  }
+
+  .title {
+    background-color: #eee; /* Mantém o fundo do título */
+    padding: 5px 0; /* Adiciona padding ao título para aumentar a área de toque */
+  }
+
+  .price {
+    align-self: center; /* Centraliza o preço no card */
+    margin-bottom: 10px; /* Adiciona margem abaixo do preço para separação do botão */
+  }
+}
