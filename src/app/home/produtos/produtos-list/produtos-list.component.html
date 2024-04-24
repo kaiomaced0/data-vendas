@@ -23,8 +23,8 @@
       <td>{{ produto.nome }}</td>
       <td>{{ produto.preco}}</td>
       <td>{{ produto.categoria }}</td>
-      <td>{{ produto.quantidadeEstoque }}</td>
-      <td><button mat-icon-button (click)="editarProduto(produto.id)">
+      <td>{{ produto.estoque }}</td>
+      <td><button mat-icon-button (click)="editar(produto.id!)">
           <mat-icon>edit</mat-icon>
         </button></td>
 
