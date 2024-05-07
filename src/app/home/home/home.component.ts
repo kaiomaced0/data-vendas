@@ -15,6 +15,9 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   constructor(private router: Router) {
+
+    // localStorage.setItem('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJkYXRhLWdpcmFmZnVzLWp3dCIsInN1YiI6IjA1NTYyODQ5MjU5IiwiZ3JvdXBzIjpbIkFkbWluIl0sImV4cCI6MTczMTU0NTUyNiwiaWF0IjoxNzE0MjY1NTI2LCJqdGkiOiI1ODY3ODUwMC03ZDgxLTRjYTEtOGZlYi0yMDYyMjY1MTQxYjEifQ.SE20jlZDF5fmE-821BphUPlkxcoHRoVD--RUrv4PCUNEqRX-LZVMalWLg0LpstPUjLdR1f0njvwFQ9TKdOsHE9ZY_FLRX80NeIXYZxQyO3RFRkAB2y_uSuJbechA4fnJOmxrDBiBfRjCwipAWBW2SKuIapPQvgxWGuWGgKBAw6-b-h7x4dzSLVQp4wfgZWrf7IhF_WPVmf5oyWskjQ6wMQvE0SklZXgULoRdVLyvfGkIxdrtAsZWM1YpRS0sapZ2baVNdIKF9rtEGkZvUpuEIfcvNwLdQjCdQz80xjMZoIHK48U576X9lKccNY19bgVzT5OUIrdbbEH5s9WXeDbozg')
+
     this.data = {
       labels: ['January', 'February', 'March'],
       datasets: [
@@ -42,40 +45,37 @@ export class HomeComponent {
             ]
         }]
     };
-
-    localStorage.setItem('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJnaXJhZmZ1cy1qd3QiLCJncm91cHMiOlsiQWRtaW4iXSwic3ViIjoia2FpbyIsImV4cCI6MTczMTIwMDk4NywiaWF0IjoxNzEzOTIwOTg3LCJqdGkiOiJiN2Q2NTUxZi04ZWU0LTQzNjQtYjlhMi1kOTgzYWIzY2M2MGQifQ.saHz-CUqvrk3L0NbQQ9DpNxkeK_hZJoaiXTe8QsdQsJG5yAMqdulR_3cBE0jkkyEpBxLeSCq-drc3lxaSx5ZCHMeJzzaua8_DKENj35c0f7t7UybJfEslNsz4CtSfuEnW9U1R7KZngaySOMHtd9xTLTHI2W9lX7k6YgVp4QR0RV8HQBk9xlLp3pK3e2zds8pCYKdpBg4tgQZ3Wj4weXIDi9EAGFi7CK_AFmOgzPJZjnay4dDRgXjFZQJh-vwjTuup_G2D4o4gLlwv0j-l-VkLtFAIefPAYMloD08Ixm3ENRnlEarjYKANTuW9XQvRKMFOtYGPxhdTTJotP09uy1NyA')
-
   }
 
   telaProdutos() {
-    this.router.navigate(['produtos']);
+    this.router.navigate(['/produto']);
   }
   telaClientes() {
-    this.router.navigate(['clientes']);
+    this.router.navigate(['/cliente']);
   }
   telaVendas() {
-    this.router.navigate(['vendas']);
+    this.router.navigate(['/venda']);
   }
   telaPagamentos() {
-    this.router.navigate(['pagamentos']);
+    this.router.navigate(['/pagamento']);
   }
   telaCategorias() {
-    this.router.navigate(['categorias']);
+    this.router.navigate(['/categoria']);
   }
   telaEstoques() {
-    this.router.navigate(['estoques']);
+    this.router.navigate(['/estoque']);
   }
   telaMarcas() {
-    this.router.navigate(['marcas']);
+    this.router.navigate(['/marca']);
   }
   telaFornecedores() {
-    this.router.navigate(['fornecedores']);
+    this.router.navigate(['/fornecedore']);
   }
   telaVisualizarAllProdutos() {
-    this.router.navigate(['produtos/all']);
+    this.router.navigate(['/produto/all']);
   }
   telaNewVenda() {
-    this.router.navigate(['vendas/new']);
+    this.router.navigate(['/venda/new']);
   }
 
   data: any;

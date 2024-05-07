@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {
-    path: 'produtos',
+    path: 'produto',
     children: [
       {
         path: '',
@@ -14,7 +14,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'clientes',
+    path: 'cliente',
     children: [
       {
         path: '',
@@ -23,7 +23,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'vendas',
+    path: 'venda',
     children: [
       {
         path: '',
@@ -32,7 +32,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'pagamentos',
+    path: 'pagamento',
     children: [
       {
         path: '',
@@ -41,7 +41,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'categorias',
+    path: 'categoria',
     children: [
       {
         path: '',
@@ -50,7 +50,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'estoques',
+    path: 'estoque',
     children: [
       {
         path: '',
@@ -59,7 +59,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'marcas',
+    path: 'marca',
     children: [
       {
         path: '',
@@ -68,7 +68,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'fornecedores',
+    path: 'fornecedor',
     children: [
       {
         path: '',
@@ -84,6 +84,10 @@ const routes: Routes = [
         loadChildren: () => import('./conta/conta.module').then(m => m.ContaModule)
       },
     ]
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

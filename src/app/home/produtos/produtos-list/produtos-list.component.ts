@@ -29,11 +29,11 @@ export class ProdutosListComponent {
     });
   }
   editar(id:number) {
-    this.router.navigate([`/admin/produtos/edit/${id}`]);
+    this.router.navigate([`/produtos/edit/${id}`]);
   }
 
   irParaNewProduto() {
-    this.router.navigate(['/admin/produtos/new']);
+    this.router.navigate(['/produtos/new']);
   }
 
 
