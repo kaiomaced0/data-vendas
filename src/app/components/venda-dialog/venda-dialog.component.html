@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Finalizar Venda</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Valor Total</mat-label>
+    <input matInput [value]="data.valorTotal" readonly>
+  </mat-form-field>
+  @for (item of data.itemProdutos; track item.id) {
+  <div>
+    <p>Id: {{ item.idProduto }} | Nome: {{ item.produto?.nome }} | Preço Unitário: {{ item.produto?.preco }} | Quantidade:
+      {{ item.quantidade }} | Valor Total: {{ item.preco }}</p>
+  </div>
+  }
+  <mat-form-field>
+    <mat-label>Descrição</mat-label>
+    <textarea matInput [(ngModel)]="descricao"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Quantidade de Parcelas</mat-label>
+    <input matInput type="number" max="99" [(ngModel)]="quantidadeParcelas">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Intervalo de Parcelas (em dias)</mat-label>
+    <input matInput type="number" max="99" [(ngModel)]="intervaloParcelas">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Data da Primeira Parcela</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="dataPrimeiraParcela">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button (click)="onConfirm()">Confirmar</button>
+</div>

@@ -4,6 +4,8 @@ import { VendasListComponent } from './vendas-list/vendas-list.component';
 import { VendasEditComponent } from './vendas-edit/vendas-edit.component';
 import { VendasNewComponent } from './vendas-new/vendas-new.component';
 import { VendasViewComponent } from './vendas-view/vendas-view.component';
+import { VendaService } from '../../services/venda/venda.service';
+import { ProdutoService } from '../../services/produto/produto.service';
 
 const routes: Routes = [
   {path: '', component: VendasListComponent},
@@ -14,6 +16,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [VendaService, ProdutoService]
 })
 export class VendasRoutingModule { }

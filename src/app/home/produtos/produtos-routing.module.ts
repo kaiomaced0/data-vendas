@@ -5,6 +5,7 @@ import { ProdutosNewComponent } from './produtos-new/produtos-new.component';
 import { ProdutosEditComponent } from './produtos-edit/produtos-edit.component';
 import { ProdutosViewComponent } from './produtos-view/produtos-view.component';
 import { ViewComponent } from './view/view.component';
+import { ProdutoService } from '../../services/produto/produto.service';
 
 const routes: Routes = [
   {path: '', component: ProdutosListComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ProdutoService]
 })
 export class ProdutosRoutingModule { }

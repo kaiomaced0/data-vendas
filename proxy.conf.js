@@ -48,12 +48,6 @@ const PROXY_CONF = [
       logLevel: 'debug'
     },
     {
-      context: ['/produtos'],
-      target: 'http://localhost:8082/',
-      secure: false,
-      logLevel: 'debug'
-    },
-    {
       context: ['/usuario'],
       target: 'http://localhost:8082/',
       secure: false,

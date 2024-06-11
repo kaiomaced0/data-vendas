@@ -9,10 +9,10 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Nome</th>
+      <th>Cliente</th>
       <th>Cidade</th>
       <th>CNPJ</th>
-      <th>Ultima Compra</th>
+      <th>Nome Empresa</th>
       <th>Editar</th>
     </tr>
   </thead>
@@ -20,11 +20,11 @@
     @for(cliente of clientes; track cliente.id){
     <tr>
       <td>{{ cliente.id }}</td>
-      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.nomeCliente }}</td>
       <td>{{ cliente.cidade}}</td>
       <td>{{ cliente.cnpj }}</td>
-      <td>{{ cliente.ultimaCompra }}</td>
-      <td><button mat-icon-button (click)="editarCliente(cliente.id)">
+      <td>{{ cliente.nomeEmpresa }}</td>
+      <td><button mat-icon-button (click)="editar(cliente.id!)">
           <mat-icon>edit</mat-icon>
         </button></td>
 

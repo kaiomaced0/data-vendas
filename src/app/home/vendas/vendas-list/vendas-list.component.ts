@@ -1,36 +1,62 @@
-import { Component } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { VendaService } from '../../../services/venda/venda.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { Venda } from '../../../models/venda.models';
 
 @Component({
   selector: 'app-vendas-list',
   standalone: true,
-  imports: [MatIcon, MatButton, MatTableModule],
+  imports: [MatIcon, MatButton, MatTableModule, HttpClientModule],
   templateUrl: './vendas-list.component.html',
   styleUrl: './vendas-list.component.css'
 })
-export class VendasListComponent {
+export class VendasListComponent implements OnInit{
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private vendaService: VendaService, private dialog: MatDialog, private snackBar: MatSnackBar) {
+  }
 
-  Vendas = [
-    { id: 1, data: '00/00/0000', valor: 5000.00, cliente: 'João joão', imageUrl: "https://via.placeholder.com/220x250?text=Venda+1" },
-    { id: 2, data: '00/00/0000', valor: 8000.00, cliente: 'João joão', imageUrl: "https://via.placeholder.com/220x250?text=Venda+1"},
-    // Adicione mais Vendas conforme necessário
-  ];
+  vendas: Venda[] = [];
+
+  ngOnInit() {
+    this.vendaService.list().subscribe((data: Venda[]) => {
+      this.vendas = data;
+    });
+  }
+  editar(id:number) {
+    this.router.navigate([`/vendas/edit/${id}`]);
+  }
 
   irParaNewVenda() {
-    this.router.navigate(['vendas/new']);
-  }
-  editarVenda(VendaId: number) {
-    this.router.navigate(['vendas/edit']);
+    this.router.navigate(['/vendas/new']);
   }
 
-  excluirVenda(VendaId: number) {
-    // Lógica para excluir o Venda
-  }
 
+  deletar(id:number, nome:string){
+    //usar dialog material
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result) {
+    //     this.VendaService.delete(id).subscribe({
+    //       next: () => {
+    //         this.snackBar.open('Venda deletado', 'Fechar', {
+    //           duration: 2000,
+    //         });
+    //         this.ngOnInit();
+    //       },
+    //       error: (error) => {
+    //         this.snackBar.open('Erro ao deletar Venda', 'Fechar', {
+    //           duration: 1000,
+    //         });
+    //       }
+    //     });
+    //   }
+    // });
+    }
 
 }
