@@ -1,21 +1,19 @@
-<!--
-// v0 by Vercel.
-// https://v0.dev/t/NXFMeDTelWL
--->
+<div class="w-full max-w mx-auto p-6 md:p-8">
+  <div class="flex justify-between p-4 border border-gray-300">
+    <div>
+      <h1 class="text-2xl font-bold mb-6">Pedido</h1>
+    </div>
+    <div class="text-1xl font-bold mb-0">
+      <button mat-stroked-button color="accent" (click)="limpar()">Limpar Pedido</button>
+    </div>
+  </div>
 
-<div class="w-full max-w-4xl mx-auto p-6 md:p-8">
-  <h1 class="text-2xl font-bold mb-6">Criar Venda</h1>
   <div class="mb-6">
 
     <mat-form-field class="w-full">
-      <input
-        matInput
-        placeholder="Pesquisar produtos..."
-        [matAutocomplete]="auto"
-        [(ngModel)]="myControl"
+      <input matInput placeholder="Pesquisar produtos..." [matAutocomplete]="auto" [(ngModel)]="myControl"
         (ngModelChange)="myControl"
-        class="flex h-10 border text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-md p-3"
-      />
+        class="flex h-10 border text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-md p-3" />
       <mat-autocomplete #auto="matAutocomplete">
         @for (nome of listaNomes; track nome) {
         <mat-option>
@@ -31,36 +29,65 @@
       <h2 class="text-lg font-bold mb-4">Produtos</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @for (produto of produtos; track produto.id) {
-          <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-100 dark:bg-gray-800 p-4">
-            <div class="flex flex-col justify-between h-full">
-              <div>
-                <h3 class="text-lg font-bold">{{ produto.nome }}</h3>
-                <p class="text-gray-500 dark:text-gray-400 mb-2">{{ produto.descricao }}</p>
+        <div class="rounded-lg border text-card-foreground shadow-sm bg-gray-100 dark:bg-gray-800 p-4">
+          <div class="flex flex-col justify-between h-full">
+            <div>
+              <h3 class="text-lg font-bold">{{produto.id}} - {{ produto.nome }}</h3>
+              <!-- <p class="text-gray-500 dark:text-gray-400 mb-2">{{ produto.descricao }}</p> -->
+              <div class="pb-5"></div>
+              <div class="flex justify-between pb-1">
                 <p class="text-lg font-bold">R$ {{ produto.preco!}}</p>
+                <mat-icon>info</mat-icon>
               </div>
-              <button mat-flat-button color="primary" (click)="addProduto(produto)">Adicionar</button>
             </div>
+            <button mat-flat-button color="primary" (click)="onOptionSelected(produto)">Adicionar</button>
           </div>
+        </div>
 
         }
 
       </div>
     </div>
     <div>
-      <h2 class="text-lg font-bold mb-4">Carrinho</h2>
+      <h2 class="text-lg font-bold mb-4">Lista Pedido</h2>
       <div class="border rounded-md p-4 bg-gray-100 dark:bg-gray-800">
-        @for (item of itemProdutos; track item) {
+        @for (item of venda?.listaItens; track item) {
+        <!-- <p>{{item.produto?.nome!}} - {{item.quantidade}}</p>
+            <<mat-icon (click)="diminuir(item.produto!)">delete</mat-icon> -->
+        <div
+          class="flex flex-col md:flex-row justify-between items-center border rounded-lg p-4  bg-gray-100 dark:bg-gray-800">
+          <div class="flex-grow mb-4 md:mb-0">
+            <h3 class="text-lg font-bold">{{item.idProduto}} - {{ item.produto!.nome}}</h3>
+          </div>
+          <div class="flex items-center mb-4 md:mb-0 p-1 border border-gray-300 bg-gray-100">
+            <!-- <button class="bg-primary text-primary-foreground hover:bg-primary/90 h-8 w-8 rounded-full"
+              (click)="diminuir(item.produto!)">
+              <mat-icon>remove</mat-icon>
+            </button> -->
+            <h3 class="mx-2 w-12 text-center" type="number">{{ item.quantidade}}</h3>
+            <!-- <button class="bg-primary text-primary-foreground hover:bg-primary/90 h-8 w-8 rounded-full"
+              (click)="onOptionSelected(item.produto!)">
+              <mat-icon>add</mat-icon>
+            </button> -->
+          </div>
+          <div class="flex items-center mb-4 md:mb-0">
+            <h3 class="mx-2 w-12 text-center">R$ {{ item.produto!.preco}}</h3>
+          </div>
+          <div class="flex flex-col items-end">
+            <p class="text-lg font-bold">Total: R$ {{ item.preco}}</p>
+          </div>
+        </div>
 
         }
       </div>
       <div class="mt-4 flex justify-end">
         <div class="text-right">
           <p class="text-gray-500 dark:text-gray-400">Total:</p>
-          <p class="text-2xl font-bold">R$ 0.00</p>
+          <p class="text-2xl font-bold">R$ {{venda?.valorTotal!}}</p>
         </div>
       </div>
       <div class="mt-4 flex justify-end">
-        <button mat-flat-button color="primary">Finalizar Venda</button>
+        <button mat-flat-button color="primary" (click)="finalizeVenda()">Finalizar Pedido</button>
       </div>
     </div>
   </div>
