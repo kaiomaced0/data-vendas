@@ -80,8 +80,20 @@ export class VendasNewComponent implements OnInit {
   }
 
   limpar(){
-    this.carrinhoService.limparCarrinho();
-    this.getCarrinho();
+
+    const dialogRef = this.dialog.open(DialogProdutoVendaComponent, {
+      width: '300px',
+      data: {
+        titulo: 'Limpar Pedido',
+        message: `Tem certeza que deseja Limpar os dados do Pedido?`,
+      }});
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.carrinhoService.limparCarrinho();
+          this.getCarrinho();
+        }
+      });
   }
 
   finalizeVenda(): void {
