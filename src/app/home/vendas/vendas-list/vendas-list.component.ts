@@ -8,11 +8,12 @@ import { VendaService } from '../../../services/venda/venda.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { Venda } from '../../../models/venda.models';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-vendas-list',
   standalone: true,
-  imports: [MatIcon, MatButton, MatTableModule, HttpClientModule],
+  imports: [MatIcon, MatButton, MatTableModule, HttpClientModule, MatDatepicker],
   templateUrl: './vendas-list.component.html',
   styleUrl: './vendas-list.component.css'
 })
