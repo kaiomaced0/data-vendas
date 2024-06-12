@@ -7,7 +7,7 @@ import { Venda } from '../../models/venda.models';
   providedIn: 'root'
 })
 export class VendaService {
-  private apiUrl = '/vendas';
+  private apiUrl = 'http://localhost:8082/vendas';
 
  private token  = localStorage.getItem('token');
 

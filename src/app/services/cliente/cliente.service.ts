@@ -7,7 +7,7 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class ClienteService {
-  private apiUrl = '/clientes';
+  private apiUrl = 'http://localhost:8082/clientes';
 
  private token  = localStorage.getItem('token');
 

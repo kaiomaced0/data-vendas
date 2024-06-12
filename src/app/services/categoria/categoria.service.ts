@@ -8,7 +8,7 @@ import { Categoria } from '../../models/categoria.model';
 })
 export class CategoriaService {
 
-   private baseUrl = '/categorias';
+   private baseUrl = 'http://localhost:8082/categorias';
 
   private token  = localStorage.getItem('token');
 
