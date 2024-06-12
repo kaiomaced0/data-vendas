@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { VendasRoutingModule } from './vendas-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     VendasRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class VendasModule { }
