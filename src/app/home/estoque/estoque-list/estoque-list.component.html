@@ -1,24 +1,39 @@
-<div class="estoque-container">
-  <table>
-    <thead>
-      <tr>
-        <th style="width: 10%;">ID</th>
-        <th style="width: 60%;">Nome</th>
-        <th style="width: 15%;">Estoque Atual</th>
-        <th style="width: 15%;">Ação</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (produto of produtos; track produto.id) {
-      <tr>
+<div class="container mx-auto p-4">
+  <div class="button-container mb-4">
+    <button class="w-full bg-green-700 hover:bg-green-800 text-white py-2 px-4 rounded flex items-center justify-center" 
+      (click)="irParaNewProduto()">
+      <mat-icon class="mr-2">add</mat-icon>
+      <span>Adicionar Novo Estoque</span>
+    </button>
+  </div>
 
-        <td>{{ produto.id }}</td>
-        <td>{{ produto.nome }}</td>
-        <td>{{ produto.estoque }}</td>
-        <td><button (click)="abrirPopup(produto)"><mat-icon>add</mat-icon></button></td>
-
-      </tr>
-    }
-    </tbody>
-  </table>
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-gray-100 border border-gray-300 rounded-lg">
+      <thead>
+        <tr class="bg-gray-200 text-gray-700 text-left">
+          <th class="py-2 px-4 border-b w-1/12">ID</th>
+          <th class="py-2 px-4 border-b w-7/12">Nome do Produto</th>
+          <th class="py-2 px-4 border-b w-2/12">Estoque</th>
+          <th class="py-2 px-4 border-b w-2/12">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of produtos; track $index) {
+          <tr class="bg-white border-b">
+            <td class="py-2 px-4">{{item.id}}</td>
+            <td class="py-2 px-4">{{item.nome}}</td>
+            <td class="py-2 px-4">{{item.estoque}}</td>
+            <td class="py-2 px-4 flex">
+              <button class="text-green-600 hover:text-green-800 mr-2">
+                <mat-icon>add</mat-icon>
+              </button>
+              <button class="text-red-600 hover:text-red-800">
+                <mat-icon>remove</mat-icon>
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>
