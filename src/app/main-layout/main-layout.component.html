@@ -1,35 +1,60 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="visibleSidebar1 = true">
+<mat-toolbar class="bg-primary-500 flex items-center w-full" color="primary">
+  <button 
+    mat-icon-button 
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="visibleSidebar1 = true">
     <mat-icon>menu</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with home icon" (click)="irParaHome()">
+
+  <button 
+    mat-icon-button 
+    class="example-icon ml-2"
+    aria-label="Example icon-button with home icon"
+    (click)="irParaHome()">
     <mat-icon>home</mat-icon>
   </button>
 
-  <span class="example-spacer"></span>
+  <span class="flex-grow"></span>
 
-
-  <button mat-icon-button [matMenuTriggerFor]="personMenu" class="example-icon" aria-label="Example icon-button with settings icon">
+  <button 
+    mat-icon-button 
+    [matMenuTriggerFor]="personMenu" 
+    class="example-icon"
+    aria-label="Example icon-button with settings icon">
     <mat-icon>person</mat-icon>
   </button>
 
   <!-- Menu de Configurações -->
   <mat-menu #personMenu="matMenu">
-
-    <button mat-menu-item (click)="irParaConta()">
+    <button 
+      mat-menu-item 
+      (click)="irParaConta()" 
+      class="flex items-center space-x-2">
       <mat-icon>person</mat-icon>
       <span>Minha Conta</span>
     </button>
   </mat-menu>
-
 </mat-toolbar>
 
 <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
-  <h1 style="font-weight:normal">Left Sidebar</h1>
-  <button pButton type="button" (click)="visibleSidebar1 = false" label="Save" class="ui-button-success"></button>
-  <button pButton type="button" (click)="visibleSidebar1 = false" label="Cancel" class="ui-button-secondary"></button>
+  <h1 class="font-normal">Left Sidebar</h1>
+  <button 
+    pButton 
+    type="button" 
+    (click)="visibleSidebar1 = false" 
+    label="Save" 
+    class="bg-green-500 text-white rounded px-4 py-2 mt-2">
+  </button>
+  <button 
+    pButton 
+    type="button" 
+    (click)="visibleSidebar1 = false" 
+    label="Cancel" 
+    class="bg-gray-500 text-white rounded px-4 py-2 mt-2 ml-2">
+  </button>
 </p-sidebar>
 
-<div class="outlet">
+<div class="outlet p-4">
   <router-outlet></router-outlet>
 </div>
