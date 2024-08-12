@@ -1,3 +1,5 @@
+import { Categoria } from "./categoria.models";
+
 export class Produto {
   id?: number;
   nome?: string;
@@ -8,7 +10,7 @@ export class Produto {
   cor?: string;
   estoque?: number;
   img?: string[];
-  categoria?: string;
+  categorias?: Categoria[];
   marca?: string;
   idCor?: number;
 
