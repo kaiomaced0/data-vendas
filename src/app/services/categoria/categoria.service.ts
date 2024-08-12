@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Produto } from '../../models/produto.model';
+import { Categoria } from '../../models/categoria.models';
 import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProdutoService {
-  private apiUrl = '/produtos';
+export class CategoriaService {
+  private apiUrl = '/categorias';
 
   private token  = localStorage.getItem('token');
 
@@ -20,20 +20,13 @@ export class ProdutoService {
   constructor(private httpClient: HttpClient) { }
 
   list(){
-    return this.httpClient.get<Produto[]>(this.apiUrl, this.httpOptions).pipe(
-      tap(produtos => console.log(produtos))
+    return this.httpClient.get<Categoria[]>(this.apiUrl, this.httpOptions).pipe(
+      tap(categorias => console.log(categorias))
     );
   }
 
-  estoques(){
-    return this.httpClient.get<Produto[]>(`${this.apiUrl+'/estoques'}`, this.httpOptions).pipe(
-      tap(produtos => console.log(produtos))
-    );
-  }
-
-
-  insert(p: Produto): Observable<Produto> {
-    return this.httpClient.post<Produto>(this.apiUrl, p, this.httpOptions);
+  insert(p: Categoria): Observable<Categoria> {
+    return this.httpClient.post<Categoria>(this.apiUrl, p, this.httpOptions);
   }
 
   delete(id: number): Observable<any> {
@@ -41,12 +34,12 @@ export class ProdutoService {
     return this.httpClient.patch(url, null, this.httpOptions2);
   }
 
-  getById(id: number): Observable<Produto> {
+  getById(id: number): Observable<Categoria> {
     const url = `${this.apiUrl}/${id}`;
-    return this.httpClient.get<Produto>(url, this.httpOptions);
+    return this.httpClient.get<Categoria>(url, this.httpOptions);
   }
 
-  update(id: number, p: Produto): Observable<any> {
+  update(id: number, p: Categoria): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.httpClient.put(url, p, this.httpOptions);
   }
