@@ -4,6 +4,7 @@ import { ClientesListComponent } from './clientes-list/clientes-list.component';
 import { ClientesNewComponent } from './clientes-new/clientes-new.component';
 import { ClientesEditComponent } from './clientes-edit/clientes-edit.component';
 import { ClientesViewComponent } from './clientes-view/clientes-view.component';
+import { ClienteService } from '../../services/cliente/cliente.service';
 
 const routes: Routes = [
   {path: '', component: ClientesListComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ClienteService]
 })
 export class ClienteRoutingModule { }

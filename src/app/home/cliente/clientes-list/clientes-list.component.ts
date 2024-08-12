@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
+import { ClienteService } from '../../../services/cliente/cliente.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Cliente } from '../../../models/cliente.models';
+import { DialogConfirmComponent } from '../../../dialog/dialog-confirm/dialog-confirm.component';
 
 
 @Component({
@@ -12,25 +17,51 @@ import { MatTableModule } from '@angular/material/table';
   templateUrl: './clientes-list.component.html',
   styleUrl: './clientes-list.component.css'
 })
-export class ClientesListComponent {
+export class ClientesListComponent implements OnInit{
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private clienteService: ClienteService, private dialog: MatDialog, private snackBar: MatSnackBar) {
+  }
 
-  clientes = [
-    { id: 1, nome: 'Cliente 1', cidade: 'Palmas - TO', ultimaCompra: '00/00/2024', cnpj: '00000000/0001-23'},
-    { id: 2, nome: 'Cliente 2', cidade: 'Palmas - TO', ultimaCompra: '00/00/2024', cnpj: '00000000/0001-23'},
-    // Adicione mais produtos conforme necessário
-  ];
+  clientes: Cliente[] = [];
+
+  ngOnInit() {
+    this.clienteService.list().subscribe((data: Cliente[]) => {
+      this.clientes = data;
+    });
+  }
+  editar(id:number) {
+    this.router.navigate([`/clientes/edit/${id}`]);
+  }
 
   irParaNewCliente() {
-    this.router.navigate(['clientes/new']);
-  }
-  editarCliente(produtoId: number) {
-    this.router.navigate(['clientes/edit']);
+    this.router.navigate(['/clientes/new']);
   }
 
-  excluirProduto(produtoId: number) {
-    // Lógica para excluir o produto
-  }
 
+  deletar(id:number, nome:string){
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      width: '250px',
+      data: {
+        message: `Tem certeza que deseja Deletar o Cliente de nome: ${nome}?`,
+        n: nome
+      }});
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.clienteService.delete(id).subscribe({
+          next: () => {
+            this.snackBar.open('Cliente deletado', 'Fechar', {
+              duration: 2000,
+            });
+            this.ngOnInit();
+          },
+          error: (error) => {
+            this.snackBar.open('Erro ao deletar Cliente', 'Fechar', {
+              duration: 1000,
+            });
+          }
+        });
+      }
+    });
+    }
 }

@@ -1,35 +1,42 @@
-<div class="button-container">
-  <button mat-raised-button color="primary" style="width: 100%; border-radius: 2px; background-color: green;"
+<div class="button-container mb-4">
+  <button class="w-full bg-green-700 hover:bg-green-800 text-white py-2 px-4 rounded flex items-center justify-center" 
     (click)="irParaNewCliente()">
-    <mat-icon>add</mat-icon>
-    Adicionar Cliente
+    <mat-icon class="mr-2">add</mat-icon>
+    <span>Adicionar Cliente</span>
   </button>
 </div>
-<table class="tabela-clientes">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Cidade</th>
-      <th>CNPJ</th>
-      <th>Ultima Compra</th>
-      <th>Editar</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(cliente of clientes; track cliente.id){
-    <tr>
-      <td>{{ cliente.id }}</td>
-      <td>{{ cliente.nome }}</td>
-      <td>{{ cliente.cidade}}</td>
-      <td>{{ cliente.cnpj }}</td>
-      <td>{{ cliente.ultimaCompra }}</td>
-      <td><button mat-icon-button (click)="editarCliente(cliente.id)">
-          <mat-icon>edit</mat-icon>
-        </button></td>
 
-    </tr>
-    }
-
-  </tbody>
-</table>
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-gray-100 border border-gray-300 rounded-lg">
+    <thead>
+      <tr class="bg-gray-200 text-gray-700 text-left">
+        <th class="py-2 px-4 border-b w-1/12">ID</th>
+        <th class="py-2 px-4 border-b w-2/12">Nome Empresa</th>
+        <th class="py-2 px-4 border-b w-2/12">CNPJ</th>
+        <th class="py-2 px-4 border-b w-2/12">Nome Cliente</th>
+        <th class="py-2 px-4 border-b w-2/12">CPF Cliente</th>
+        <th class="py-2 px-4 border-b w-2/12">Cidade</th>
+        <th class="py-2 px-4 border-b w-3/12">Endereço</th>
+        <th class="py-2 px-4 border-b w-1/12">Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (cliente of clientes; track $index) {
+      <tr class="bg-white border-b">
+        <td class="py-2 px-4 w-1/12 text-left">{{cliente.id}}</td>
+        <td class="py-2 px-4 w-2/12 text-left">{{cliente.nomeEmpresa}}</td>
+        <td class="py-2 px-4 w-2/12 text-left">{{cliente.cnpj}}</td>
+        <td class="py-2 px-4 w-2/12 text-left">{{cliente.nomeCliente}}</td>
+        <td class="py-2 px-4 w-2/12 text-left">{{cliente.cpfCliente}}</td>
+        <td class="py-2 px-4 w-2/12 text-left">{{cliente.cidade!.nome}} - {{cliente.cidade!.estado}}</td>
+        <td class="py-2 px-4 w-3/12 text-left">{{cliente.endereco}}</td>
+        <td class="py-2 px-4 w-1/12 text-left">
+          <button class="text-gray-500 hover:text-gray-700">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
