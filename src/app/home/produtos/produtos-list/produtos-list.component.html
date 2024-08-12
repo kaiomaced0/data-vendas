@@ -1,35 +1,45 @@
-<div class="button-container">
-  <button mat-raised-button color="primary" style="width: 100%; border-radius: 2px; background-color: green;"
+<div class="button-container mb-4">
+  <button class="w-full bg-green-700 hover:bg-green-800 text-white py-2 px-4 rounded flex items-center justify-center" 
     (click)="irParaNewProduto()">
-    <mat-icon>add</mat-icon>
-    Adicionar Produto
+    <mat-icon class="mr-2">add</mat-icon>
+    <span>Adicionar Produto</span>
   </button>
 </div>
-<table class="tabela-produtos">
-  <thead>
-    <tr>
-      <th style="width: 10%;">ID</th>
-      <th style="width: 40%;">Nome</th>
-      <th style="width: 10%;">Preço</th>
-      <th style="width: 15%;">Categoria</th>
-      <th style="width: 15%;">Estoque</th>
-      <th style="width: 10%;">Editar</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(produto of produtos; track produto.id){
-    <tr>
-      <td>{{ produto.id }}</td>
-      <td>{{ produto.nome }}</td>
-      <td>{{ produto.preco}}</td>
-      <td>{{ produto.categoria }}</td>
-      <td>{{ produto.estoque }}</td>
-      <td><button mat-icon-button (click)="editar(produto.id!)">
-          <mat-icon>edit</mat-icon>
-        </button></td>
 
-    </tr>
-    }
-
-  </tbody>
-</table>
+<div class="overflow-x-auto">
+  <table class="min-w-full bg-gray-100 border border-gray-300 rounded-lg">
+    <thead>
+      <tr class="bg-gray-200 text-gray-700 text-left">
+        <th class="py-2 px-4 border-b w-1/12">ID</th>
+        <th class="py-2 px-4 border-b w-4/12">Nome</th>
+        <th class="py-2 px-4 border-b w-2/12">Preço</th>
+        <th class="py-2 px-4 border-b w-2/12">Categoria</th>
+        <th class="py-2 px-4 border-b w-2/12">Estoque</th>
+        <th class="py-2 px-4 border-b w-1/12">Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (produto of produtos; track $index) {
+      <tr class="bg-white border-b">
+        <td class="py-2 px-4 w-1/12 text-left">{{produto.id}}</td>
+        <td class="py-2 px-4 w-4/12 text-left">{{produto.nome}}</td>
+        <td class="py-2 px-4 w-2/12 text-left">R$ {{(produto.preco)}}</td>
+        @if (produto.categorias![0] == null) {
+          
+        <td class="py-2 px-4 w-2/12 text-left"></td>
+        }@else{
+        <td class="py-2 px-4 w-2/12 text-left">@for (item of produto.categorias; track $index) {
+          {{item.nome}}.
+        }</td>
+        }
+        <td class="py-2 px-4 w-2/12 text-left">{{produto.estoque}}</td>
+        <td class="py-2 px-4 w-1/12 text-left">
+          <button class="text-gray-500 hover:text-gray-700">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

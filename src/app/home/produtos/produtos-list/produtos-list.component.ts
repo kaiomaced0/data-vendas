@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogConfirmComponent } from '../../../dialog/dialog-confirm/dialog-confirm.component';
 import { ProdutoService } from '../../../services/produto/produto.service';
+import { withFetch } from '@angular/common/http';
 
 @Component({
   selector: 'app-produtos-list',
@@ -16,7 +17,7 @@ import { ProdutoService } from '../../../services/produto/produto.service';
   templateUrl: './produtos-list.component.html',
   styleUrl: './produtos-list.component.css'
 })
-export class ProdutosListComponent {
+export class ProdutosListComponent implements OnInit{
 
   constructor(private router: Router, private produtoService: ProdutoService, private dialog: MatDialog, private snackBar: MatSnackBar) {
   }
