@@ -1,29 +1,37 @@
-<div class="button-container">
-  <button mat-raised-button color="primary" style="width: 100%; border-radius: 2px; background-color: green;"
-    (click)="irParaNewCategorias()">
-    <mat-icon>add</mat-icon>
-    Adicionar Categoria
-  </button>
+<div class="container mx-auto p-4">
+  <div class="button-container mb-4">
+    <button class="w-full bg-green-700 hover:bg-green-800 text-white py-2 px-4 rounded flex items-center justify-center" 
+      (click)="irParaNewcategoria()">
+      <mat-icon class="mr-2">add</mat-icon>
+      <span>Adicionar Categoria</span>
+    </button>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-gray-100 border border-gray-300 rounded-lg">
+      <thead>
+        <tr class="bg-gray-200 text-gray-700 text-left">
+          <th class="py-2 px-4 border-b w-1/12">ID</th>
+          <th class="py-2 px-4 border-b w-9/12">Nome da Categoria</th>
+          <th class="py-2 px-4 border-b w-2/12">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (categoria of categorias; track $index) {
+          <tr class="bg-white border-b">
+            <td class="py-2 px-4">{{categoria.id}}</td>
+            <td class="py-2 px-4">{{categoria.nome}}</td>
+            <td class="py-2 px-4">
+              <button class="text-gray-500 hover:text-gray-700" (click)="editar(categoria.id!)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="text-gray-500 hover:text-gray-700 ml-2" (click)="deletar(categoria.id!, categoria.nome!)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>
-<table class="tabela-produtos">
-  <thead>
-    <tr>
-      <th style="width: 15%;">ID</th>
-      <th style="width: 70%;">Nome</th>
-      <th style="width: 15%;">Editar</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(categoria of categorias; track categoria.id){
-    <tr>
-      <td>{{ categoria.id }}</td>
-      <td>{{ categoria.nome }}</td>
-      <td><button mat-icon-button (click)="editarCategorias(categoria.id)">
-          <mat-icon>edit</mat-icon>
-        </button></td>
-
-    </tr>
-    }
-
-  </tbody>
-</table>
