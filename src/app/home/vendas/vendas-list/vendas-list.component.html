@@ -1,33 +1,41 @@
-<div class="button-container">
-  <button mat-raised-button color="primary" style="width: 100%; border-radius: 2px; background-color: green;"
-    (click)="irParaNewVenda()">
-    <mat-icon>add</mat-icon>
-    Adicionar Vendas
-  </button>
+<div class="container mx-auto p-4">
+  <div class="button-container mb-4">
+    <button class="w-full bg-green-700 hover:bg-green-800 text-white py-2 px-4 rounded flex items-center justify-center" 
+      (click)="irParaNewvenda()">
+      <mat-icon class="mr-2">add</mat-icon>
+      <span>Adicionar Venda</span>
+    </button>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-gray-100 border border-gray-300 rounded-lg">
+      <thead>
+        <tr class="bg-gray-200 text-gray-700 text-left">
+          <th class="py-2 px-4 border-b w-1/12">ID</th>
+          <th class="py-2 px-4 border-b w-3/12">Nome Empresa</th>
+          <th class="py-2 px-4 border-b w-2/12">CNPJ</th>
+          <th class="py-2 px-4 border-b w-2/12">Cidade</th>
+          <th class="py-2 px-4 border-b w-2/12">Valor Total</th>
+          <th class="py-2 px-4 border-b w-2/12">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (venda of vendas; track $index) {
+
+          <tr class="bg-white border-b">
+            <td class="py-2 px-4">{{venda.id}}</td>
+            <td class="py-2 px-4">{{venda.cliente!.nomeEmpresa}}</td>
+            <td class="py-2 px-4">{{venda.cliente!.cnpj}}</td>
+            <td class="py-2 px-4">{{venda.cliente!.cidade?.nome}}</td>
+            <td class="py-2 px-4">R$ {{venda.valorTotal}}</td>
+            <td class="py-2 px-4">
+              <button class="text-gray-500 hover:text-gray-700" (click)="editar(venda.id!)">
+                <mat-icon>visibility</mat-icon>
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </div>
-<table class="tabela-vendas">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Data</th>
-      <th>Valor</th>
-      <th>Cliente</th>
-      <th>Editar</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for(venda of Vendas; track venda.id){
-    <tr>
-      <td>{{ venda.id }}</td>
-      <td>{{ venda.data }}</td>
-      <td>{{ venda.valor}}</td>
-      <td>{{ venda.cliente }}</td>
-      <td><button mat-icon-button (click)="editarVenda(venda.id)">
-          <mat-icon>edit</mat-icon>
-        </button></td>
-
-    </tr>
-    }
-
-  </tbody>
-</table>
