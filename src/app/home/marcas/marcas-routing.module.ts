@@ -4,6 +4,7 @@ import { MarcasListComponent } from './marcas-list/marcas-list.component';
 import { MarcasEditComponent } from './marcas-edit/marcas-edit.component';
 import { MarcasNewComponent } from './marcas-new/marcas-new.component';
 import { MarcasViewComponent } from './marcas-view/marcas-view.component';
+import { MarcaService } from '../../services/marca/marca.service';
 
 const routes: Routes = [
   {path: '', component: MarcasListComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [MarcaService]
 })
 export class MarcasRoutingModule { }
