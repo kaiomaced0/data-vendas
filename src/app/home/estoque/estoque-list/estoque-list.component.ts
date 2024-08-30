@@ -22,9 +22,9 @@ export class EstoqueListComponent implements OnInit {
   produtos: Produto[] = [];
 
   ngOnInit() {
-    this.produtoService.list().subscribe((data: Produto[]) => {
-      this.produtos = data;
-    });
+    // this.produtoService.list().subscribe((data: Produto[]) => {
+    //   this.produtos = data;
+    // });
   }
   editar(id:number) {
     this.router.navigate([`/produtos/edit/${id}`]);

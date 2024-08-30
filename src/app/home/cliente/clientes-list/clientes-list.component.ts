@@ -8,12 +8,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Cliente } from '../../../models/cliente.models';
 import { DialogConfirmComponent } from '../../../dialog/dialog-confirm/dialog-confirm.component';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 
 @Component({
   selector: 'app-clientes-list',
   standalone: true,
-  imports: [MatIcon, MatButton, MatTableModule],
+  imports: [MatIcon, MatButton, MatTableModule, MatPaginator],
   templateUrl: './clientes-list.component.html',
   styleUrl: './clientes-list.component.css'
 })
@@ -24,10 +25,16 @@ export class ClientesListComponent implements OnInit{
 
   clientes: Cliente[] = [];
 
+  pageSize = 20;
+  page = 1;
+  totalRecords = 0;
   ngOnInit() {
-    this.clienteService.list().subscribe((data: Cliente[]) => {
+    this.clienteService.list(this.page, this.pageSize).subscribe((data: Cliente[]) => {
       this.clientes = data;
     });
+    this.clienteService.listSize().subscribe((data: number) => {
+      this.totalRecords = data;
+    })
   }
   editar(id:number) {
     this.router.navigate([`/clientes/edit/${id}`]);
@@ -35,6 +42,11 @@ export class ClientesListComponent implements OnInit{
 
   irParaNewCliente() {
     this.router.navigate(['/clientes/new']);
+  }
+  paginar(event: PageEvent): void {
+    this.page = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
   }
 
 
