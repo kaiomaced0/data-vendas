@@ -20,12 +20,16 @@ export class ClienteService {
   };
   constructor(private httpClient: HttpClient) { }
 
-  list(){
-    return this.httpClient.get<Cliente[]>(this.apiUrl, this.httpOptions).pipe(
+  list(page: number, pageSize: number){
+    return this.httpClient.get<Cliente[]>(`${this.apiUrl}/${page}/${pageSize}`, this.httpOptions).pipe(
       tap(clientes => console.log(clientes))
     );
   }
-
+  listSize(){
+    return this.httpClient.get<number>(`${this.apiUrl}/size`, this.httpOptions).pipe(
+      tap(clientesSize => console.log(clientesSize))
+    );
+  }
   insert(c: Cliente): Observable<Cliente> {
     return this.httpClient.post<Cliente>(this.apiUrl, c, this.httpOptions);
   }

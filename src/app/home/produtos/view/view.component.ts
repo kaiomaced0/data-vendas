@@ -21,7 +21,7 @@ export class ViewComponent {
   produtos: Produto[] = [];
 
   ngOnInit() {
-    this.produtoService.list().subscribe((data: Produto[]) => {
+    this.produtoService.list(1, 1000).subscribe((data: Produto[]) => {
       this.produtos = data;
     });
   }
