@@ -64,6 +64,12 @@ const PROXY_CONF = [
       target: 'http://localhost:8082/',
       secure: false,
       logLevel: 'debug'
+    },
+    {
+      context: ['/pagamentos'],
+      target: 'http://localhost:8082/',
+      secure: false,
+      logLevel: 'debug'
     }
   ];
 
