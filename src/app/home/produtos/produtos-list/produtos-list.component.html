@@ -42,4 +42,13 @@
       }
     </tbody>
   </table>
+  <div class="flex justify-end mt-2">
+    <mat-paginator
+      class="bg-white rounded-lg shadow-md p-2"
+      [pageSizeOptions]="[10, 20, 30, 40, 80]"
+      [pageSize]="pageSize"
+      [length]="totalRecords"
+      (page)="paginar($event)">
+    </mat-paginator>
+  </div>
 </div>

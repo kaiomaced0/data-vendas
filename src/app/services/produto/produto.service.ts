@@ -19,9 +19,14 @@ export class ProdutoService {
   };
   constructor(private httpClient: HttpClient) { }
 
-  list(){
-    return this.httpClient.get<Produto[]>(this.apiUrl, this.httpOptions).pipe(
+  list(page: number, pageSize: number){
+    return this.httpClient.get<Produto[]>(`${this.apiUrl}/${page}/${pageSize}`, this.httpOptions).pipe(
       tap(produtos => console.log(produtos))
+    );
+  }
+  listSize(){
+    return this.httpClient.get<number>(`${this.apiUrl}/size`, this.httpOptions).pipe(
+      tap(produtosSize => console.log(produtosSize))
     );
   }
 
