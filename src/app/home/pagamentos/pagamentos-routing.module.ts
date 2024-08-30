@@ -4,6 +4,7 @@ import { PagamentosListComponent } from './pagamentos-list/pagamentos-list.compo
 import { PagamentosEditComponent } from './pagamentos-edit/pagamentos-edit.component';
 import { PagamentosNewComponent } from './pagamentos-new/pagamentos-new.component';
 import { PagamentosViewComponent } from './pagamentos-view/pagamentos-view.component';
+import { PagamentoService } from '../../services/pagamento/pagamento.service';
 
 const routes: Routes = [
   {path: '', component: PagamentosListComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [PagamentoService]
 })
 export class PagamentosRoutingModule { }
