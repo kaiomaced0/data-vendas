@@ -8,11 +8,12 @@ import { Categoria } from '../../../models/categoria.models';
 import { DialogConfirmComponent } from '../../../dialog/dialog-confirm/dialog-confirm.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-categorias-list',
   standalone: true,
-  imports: [MatIcon, MatButton, MatTableModule],
+  imports: [MatIcon, MatButton, MatTableModule, MatPaginatorModule],
   templateUrl: './categorias-list.component.html',
   styleUrl: './categorias-list.component.css'
 })
@@ -21,13 +22,27 @@ export class CategoriasListComponent implements OnInit{
   constructor(private router: Router, private categoriaService: CategoriaService, private dialog: MatDialog, private snackBar: MatSnackBar) {
   }
 
+    pageSize = 20;
+    page = 1;
+    totalRecords = 0;
   categorias: Categoria[] = [];
 
   ngOnInit() {
-    this.categoriaService.list().subscribe((data: Categoria[]) => {
+    this.categoriaService.list(this.page, this.pageSize).subscribe((data: Categoria[]) => {
       this.categorias = data;
     });
+    this.categoriaService.listSize().subscribe((data: number) => {
+      this.totalRecords = data;
+    })
   }
+
+  
+  paginar(event: PageEvent): void {
+    this.page = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.ngOnInit();
+  }
+
   editar(id:number) {
     this.router.navigate([`/categorias/edit/${id}`]);
   }

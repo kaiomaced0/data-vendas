@@ -19,9 +19,14 @@ export class CategoriaService {
   };
   constructor(private httpClient: HttpClient) { }
 
-  list(){
-    return this.httpClient.get<Categoria[]>(this.apiUrl, this.httpOptions).pipe(
+  list(page: number, pageSize: number){
+    return this.httpClient.get<Categoria[]>(`${this.apiUrl}/${page}/${pageSize}`, this.httpOptions).pipe(
       tap(categorias => console.log(categorias))
+    );
+  }
+  listSize(){
+    return this.httpClient.get<number>(`${this.apiUrl}/size`, this.httpOptions).pipe(
+      tap(categoriaSize => console.log(categoriaSize))
     );
   }
 
