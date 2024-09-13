@@ -7,7 +7,7 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoriaService {
-  private apiUrl = '/categorias';
+  private apiUrl = 'http://localhost:8082/categorias';
 
   private token  = localStorage.getItem('token');
 

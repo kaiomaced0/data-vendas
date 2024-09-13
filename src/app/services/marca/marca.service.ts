@@ -7,26 +7,31 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class MarcaService {
-  private apiUrl = '/marcas';
+  private apiUrl = 'http://localhost:8082/marcas';
 
-  private token  = localStorage.getItem('token');
+  private token = localStorage.getItem('token');
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token })
   };
   httpOptions2 = {
-    headers: new HttpHeaders({'Authorization': 'Bearer ' + this.token})
+    headers: new HttpHeaders({ 'Authorization': 'Bearer ' + this.token })
   };
   constructor(private httpClient: HttpClient) { }
 
-  list(){
-    return this.httpClient.get<Marca[]>(this.apiUrl, this.httpOptions).pipe(
+  list(page: number, pageSize: number) {
+    return this.httpClient.get<Marca[]>(`${this.apiUrl}/${page}/${pageSize}`, this.httpOptions).pipe(
       tap(marcas => console.log(marcas))
     );
   }
+  listSize() {
+    return this.httpClient.get<number>(`${this.apiUrl}/size`, this.httpOptions).pipe(
+      tap(categoriaSize => console.log(categoriaSize))
+    );
+  }
 
-  estoques(){
-    return this.httpClient.get<Marca[]>(`${this.apiUrl+'/estoques'}`, this.httpOptions).pipe(
+  estoques() {
+    return this.httpClient.get<Marca[]>(`${this.apiUrl + '/estoques'}`, this.httpOptions).pipe(
       tap(marcas => console.log(marcas))
     );
   }

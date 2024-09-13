@@ -7,7 +7,7 @@ import { tap } from 'rxjs';
   providedIn: 'root'
 })
 export class PagamentoService {
-  private apiUrl = '/pagamentos';
+  private apiUrl = 'http://localhost:8082/pagamentos';
 
   private token  = localStorage.getItem('token');
 

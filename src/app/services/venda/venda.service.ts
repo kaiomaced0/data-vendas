@@ -8,7 +8,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class VendaService {
 
-  private apiUrl = '/vendas';
+  private apiUrl = 'http://localhost:8082/vendas';
 
   private token  = localStorage.getItem('token');
 
@@ -20,9 +20,14 @@ export class VendaService {
   };
   constructor(private httpClient: HttpClient) { }
 
-  list(){
-    return this.httpClient.get<Venda[]>(this.apiUrl, this.httpOptions).pipe(
+  list(page: number, pageSize: number){
+    return this.httpClient.get<Venda[]>(`${this.apiUrl}/${page}/${pageSize}`, this.httpOptions).pipe(
       tap(vendas => console.log(vendas))
+    );
+  }
+  listSize(){
+    return this.httpClient.get<number>(`${this.apiUrl}/size`, this.httpOptions).pipe(
+      tap(categoriaSize => console.log(categoriaSize))
     );
   }
 

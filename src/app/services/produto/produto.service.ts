@@ -7,7 +7,7 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class ProdutoService {
-  private apiUrl = '/produtos';
+  private apiUrl = 'http://localhost:8082/produtos';
 
   private token  = localStorage.getItem('token');
 
