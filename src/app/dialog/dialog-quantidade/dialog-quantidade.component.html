@@ -1,0 +1,37 @@
+<div class="p-6 max-w-md mx-auto bg-white rounded-xl space-y-4">
+    <!-- Título do Diálogo -->
+    <h2 class="text-2xl font-bold text-gray-900">Adicionar {{ data.nome }}</h2>
+  
+    <!-- Conteúdo do Diálogo -->
+    <div>
+      <p class="text-gray-700">Preço Unitário: R$ {{ data.preco | number: '1.2-2' }}</p>
+  
+      <!-- Campo de Quantidade -->
+      <label for="quantidade" class="block text-sm font-medium text-gray-700 mt-2">Quantidade</label>
+      <input 
+        type="number" 
+        id="quantidade"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" 
+        [(ngModel)]="quantidade" 
+        (input)="onQuantidadeChange()" 
+        min="1" 
+      />
+  
+      <!-- Exibe o valor total -->
+      <p class="mt-4 text-gray-900 font-semibold">Total: R$ {{ valorTotal | number: '1.2-2' }}</p>
+    </div>
+  
+    <!-- Ações do Diálogo -->
+    <div class="flex justify-end space-x-4">
+      <button 
+        class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600" 
+        (click)="cancelar()">
+        Cancelar
+      </button>
+      <button 
+        class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" 
+        (click)="adicionar()">
+        Adicionar
+      </button>
+    </div>
+</div>

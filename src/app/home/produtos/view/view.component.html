@@ -1,9 +1,20 @@
-<div class="produtos-home">
-  @for (produto of produtos; track produto.id){
+<div class="produtos-home mx-2 my-2 flex flex-wrap justify-center gap-4 items-center ">
+  @for (produto of produtos; track $index) {
+  <div class="w-full max-w-xs bg-white shadow-lg rounded-lg overflow-hidden flex flex-col items-center p-2">
 
-  <app-card-produto [id]="produto.id!.toString()"                  
-    [title]="produto.nome!"
-    [price]="produto.preco!"
-    [stars]="produto.id!"/>
+    <!-- Imagem e detalhes do produto -->
+    <div class="flex flex-col items-center justify-center w-full">
+      <app-card-produto [id]="produto.id!.toString()" [title]="produto.nome!" [price]="produto.preco!"
+        [stars]="produto.id!">
+      </app-card-produto>
+    </div>
+
+    <!-- Botão para adicionar ao carrinho -->
+    <button class="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+      (click)="openDialog(produto)">
+      Adicionar ao Carrinho
+    </button>
+
+  </div>
   }
 </div>

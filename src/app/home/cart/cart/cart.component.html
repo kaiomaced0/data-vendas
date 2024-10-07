@@ -1,0 +1,62 @@
+<div class="container mx-auto p-4">
+    <h2 class="text-2xl font-semibold text-gray-100 mb-4">Meu Carrinho</h2>
+  
+    <!-- Verificar se há itens no carrinho -->
+    <div *ngIf="cart!.listaItens!.length > 0; else emptyCart">
+      <table class="min-w-full bg-gray-800 border border-gray-700 rounded-lg shadow-lg">
+        <thead>
+          <tr class="bg-gray-700 text-gray-300 text-left">
+            <th class="py-2 px-4">Produto</th>
+            <th class="py-2 px-4">Quantidade</th>
+            <th class="py-2 px-4">Preço Unitário</th>
+            <th class="py-2 px-4">Subtotal</th>
+            <th class="py-2 px-4">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+        @for (item of cart?.listaItens; track $index) {
+          <tr class="bg-gray-900 border-b border-gray-700 text-gray-300">
+            <td class="py-2 px-4">{{ item.idProduto }}</td>
+            <td class="py-2 px-4">
+              <input 
+                type="number" 
+                min="1" 
+                [(ngModel)]="item.quantidade" 
+                (change)="updateQuantity(item, item.quantidade!)"
+                class="border border-gray-600 rounded p-1 w-16 bg-gray-700 text-gray-100">
+            </td>
+            <td class="py-2 px-4">{{ formatPrice(item.preco!) }}</td>
+            <td class="py-2 px-4">{{ formatPrice(item.preco! * item.quantidade!) }}</td>
+            <td class="py-2 px-4">
+              <button class="text-red-500 hover:text-red-700" (click)="removeItem(item)">
+                Remover
+              </button>
+            </td>
+          </tr>
+        }
+        </tbody>
+      </table>
+  
+      <div class="mt-4">
+        <h3 class="text-xl font-semibold text-gray-100">Total: {{ formatPrice(cart?.valorTotal!) }}</h3>
+      </div>
+  
+      <div class="mt-4 flex justify-between">
+        <button class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded" (click)="clearCart()">
+          Limpar Carrinho
+        </button>
+        <button class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded" (click)="completePurchase()">
+          Concluir Compra
+        </button>
+      </div>
+    </div>
+  
+    <!-- Carrinho vazio -->
+    <ng-template #emptyCart>
+      <div class="text-center text-gray-500">
+        <p>O carrinho está vazio.</p>
+      </div>
+    </ng-template>
+  </div>
+  

@@ -1,1 +1,23 @@
-<p>dialog-confirm works!</p>
+<div class="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4">
+  <!-- Título do Diálogo -->
+  <h2 class="text-2xl font-bold text-gray-900">Confirmar Ação</h2>
+  
+  <!-- Conteúdo do Diálogo -->
+  <div>
+    <p class="text-gray-700">Tem certeza de que deseja limpar o carrinho?</p>
+  </div>
+
+  <!-- Ações do Diálogo -->
+  <div class="flex justify-end space-x-4">
+    <button 
+      class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600" 
+      (click)="cancel()">
+      Cancelar
+    </button>
+    <button 
+      class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600" 
+      (click)="confirm()">
+      Confirmar
+    </button>
+  </div>
+</div>

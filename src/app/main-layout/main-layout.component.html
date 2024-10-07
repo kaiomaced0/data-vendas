@@ -1,4 +1,5 @@
 <mat-toolbar class="bg-primary-500 flex items-center w-full" color="primary">
+  <!-- Botão de Menu -->
   <button 
     mat-icon-button 
     class="example-icon"
@@ -7,6 +8,7 @@
     <mat-icon>menu</mat-icon>
   </button>
 
+  <!-- Botão de Home -->
   <button 
     mat-icon-button 
     class="example-icon ml-2"
@@ -15,8 +17,18 @@
     <mat-icon>home</mat-icon>
   </button>
 
+  <!-- Flex para centralizar os ícones à direita -->
   <span class="flex-grow"></span>
 
+  <!-- Ícone de Carrinho com Preço Total -->
+  <div class="flex items-center space-x-2">
+    <button mat-icon-button (click)="irParaCarrinho()">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <span class="text-white font-semibold">R$ {{ totalCarrinho | number: '1.2-2' }}</span>
+  </div>
+
+  <!-- Botão de Conta -->
   <button 
     mat-icon-button 
     [matMenuTriggerFor]="personMenu" 
@@ -37,6 +49,7 @@
   </mat-menu>
 </mat-toolbar>
 
+<!-- Sidebar -->
 <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
   <h1 class="font-normal">Left Sidebar</h1>
   <button 
@@ -55,6 +68,7 @@
   </button>
 </p-sidebar>
 
+<!-- Outlet -->
 <div class="outlet p-4">
   <router-outlet></router-outlet>
 </div>

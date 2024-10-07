@@ -23,11 +23,11 @@
         @for (venda of vendas; track $index) {
 
           <tr class="bg-white border-b">
-            <td class="py-2 px-4">{{venda.id}}</td>
-            <td class="py-2 px-4">{{venda.cliente!.nomeEmpresa}}</td>
-            <td class="py-2 px-4">{{venda.cliente!.cnpj}}</td>
-            <td class="py-2 px-4">{{venda.cliente!.cidade?.nome}}</td>
-            <td class="py-2 px-4">R$ {{venda.valorTotal}}</td>
+            <td class="py-2 px-4">{{venda?.id}}</td>
+          <td class="py-2 px-4">{{venda?.cliente?.nomeEmpresa || 'N/A'}}</td>
+          <td class="py-2 px-4">{{venda?.cliente?.cnpj || 'N/A'}}</td>
+          <td class="py-2 px-4">{{venda?.cliente?.cidade?.nome || 'N/A'}}</td>
+          <td class="py-2 px-4">R$ {{venda?.valorTotal || '0,00'}}</td>
             <td class="py-2 px-4">
               <button class="text-gray-500 hover:text-gray-700" (click)="editar(venda.id!)">
                 <mat-icon>visibility</mat-icon>
