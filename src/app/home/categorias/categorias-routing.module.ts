@@ -9,7 +9,7 @@ import { CategoriaService } from '../../services/categoria/categoria.service';
 const routes: Routes = [
   {path: '', component: CategoriasListComponent},
   {path: 'new', component: CategoriasNewComponent},
-  {path: 'edit', component: CategoriasEditComponent},
+  {path: 'edit/', component: CategoriasEditComponent},
   {path: 'view', component: CategoriasViewComponent}];
 
 @NgModule({

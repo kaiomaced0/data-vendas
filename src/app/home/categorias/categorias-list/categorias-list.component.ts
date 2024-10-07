@@ -44,11 +44,11 @@ export class CategoriasListComponent implements OnInit{
   }
 
   editar(id:number) {
-    this.router.navigate([`/categorias/edit/${id}`]);
+    this.router.navigate([`/categoria/edit/${id}`]);
   }
 
   irParaNewcategoria() {
-    this.router.navigate(['/categorias/new']);
+    this.router.navigate(['/categoria/new']);
   }
 
 
