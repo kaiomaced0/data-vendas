@@ -1,0 +1,61 @@
+<!-- produto.component.html -->
+<div class="max-w-lg mx-auto bg-gray-800 shadow-md rounded-lg p-8 mt-6">
+  <h2 class="text-2xl font-semibold text-white mb-4">Cadastrar Produto</h2>
+  
+  <form #produtoForm="ngForm" class="space-y-4">
+    
+    <div class="form-field">
+      <label for="nome" class="block text-sm font-medium text-gray-300">Nome:</label>
+      <input type="text" id="nome" name="nome" [(ngModel)]="produto!.nome!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
+    </div>
+    
+    <div class="form-field">
+      <label for="nomeLongo" class="block text-sm font-medium text-gray-300">Nome longo:</label>
+      <input type="text" id="nomeLongo" name="nomeLongo" [(ngModel)]="produto!.nomeLongo!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
+    </div>
+    
+    <div class="form-field">
+      <label for="descricao" class="block text-sm font-medium text-gray-300">Descrição:</label>
+      <input type="text" id="descricao" name="descricao" [(ngModel)]="produto!.descricao!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
+    </div>
+    
+    <div class="form-field">
+      <label for="valorCompra" class="block text-sm font-medium text-gray-300">Custo:</label>
+      <input type="number" id="valorCompra" name="valorCompra" [(ngModel)]="produto!.valorCompra" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
+    </div>
+    
+    <div class="form-field">
+      <label for="preco" class="block text-sm font-medium text-gray-300">Preço:</label>
+      <input type="number" id="preco" name="preco" [(ngModel)]="produto!.preco!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
+    </div>
+    
+    <div class="form-field">
+      <label for="estoque" class="block text-sm font-medium text-gray-300">Estoque Inicial:</label>
+      <input type="number" id="estoque" name="estoque" [(ngModel)]="produto!.estoque!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
+    </div>
+    
+    <div class="form-field">
+      <label for="estoqueMinimo" class="block text-sm font-medium text-gray-300">Estoque Minimo:</label>
+      <input type="number" id="estoqueMinimo" name="estoqueMinimo" [(ngModel)]="produto!.estoqueMinimo!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
+    </div>
+
+    <div class="form-field">
+      <label for="codigo" class="block text-sm font-medium text-gray-300">Código do Produto:</label>
+      <input type="text" id="codigo" name="codigo" [(ngModel)]="produto!.codigo!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
+    </div>
+
+    <div class="form-field">
+      <label for="codigoBarras" class="block text-sm font-medium text-gray-300">Código de Barras:</label>
+      <input type="text" id="codigoBarras" name="codigoBarras" [(ngModel)]="produto!.codigoBarras!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
+    </div>
+    
+    <div class="flex justify-end space-x-4">
+      <button mat-flat-button color="warn" (click)="cancelar()" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">
+        Cancelar
+      </button>
+      <button mat-flat-button color="primary" type="submit" (click)="adicionarProduto()" class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600">
+        Cadastrar
+      </button>
+    </div>
+  </form>
+</div>

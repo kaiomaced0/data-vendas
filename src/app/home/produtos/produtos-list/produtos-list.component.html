@@ -34,7 +34,7 @@
         }
         <td class="py-2 px-4 w-2/12 text-left">{{produto.estoque}}</td>
         <td class="py-2 px-4 w-1/12 text-left">
-          <button class="text-gray-500 hover:text-gray-700">
+          <button class="text-gray-500 hover:text-gray-700" (click)="editar(produto.id!)">
             <mat-icon>edit</mat-icon>
           </button>
         </td>
