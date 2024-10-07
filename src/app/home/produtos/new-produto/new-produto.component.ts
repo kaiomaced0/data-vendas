@@ -31,7 +31,7 @@ export class NewProdutoComponent implements OnInit {
   uploadPercent: number | undefined;
 
   cancelar() {
-    this.router.navigate(['/admin/produtos']);
+    this.router.navigate(['/produto']);
   }
 
   constructor(

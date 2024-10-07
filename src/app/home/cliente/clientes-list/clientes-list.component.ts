@@ -37,11 +37,11 @@ export class ClientesListComponent implements OnInit{
     })
   }
   editar(id:number) {
-    this.router.navigate([`/clientes/edit/${id}`]);
+    this.router.navigate([`/cliente/edit/${id}`]);
   }
 
   irParaNewCliente() {
-    this.router.navigate(['/clientes/new']);
+    this.router.navigate(['/cliente/new']);
   }
   paginar(event: PageEvent): void {
     this.page = event.pageIndex + 1;

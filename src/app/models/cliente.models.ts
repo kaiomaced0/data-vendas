@@ -8,6 +8,7 @@ export class Cliente {
   cpfCliente?: string;
   cidade?: Cidade;
   endereco?: string;
+  idCidade?: number;
 
 
   constructor(
