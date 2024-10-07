@@ -9,10 +9,13 @@ export class Produto {
   preco?: number;
   cor?: string;
   estoque?: number;
+  estoqueMinimo?: number;
   img?: string[];
   categorias?: Categoria[];
   marca?: string;
   idCor?: number;
+  codigo?: string;
+  codigoBarras?: string;
 
   constructor(
   ) {
