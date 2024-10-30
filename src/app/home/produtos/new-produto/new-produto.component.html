@@ -1,61 +1,99 @@
-<!-- produto.component.html -->
-<div class="max-w-lg mx-auto bg-gray-800 shadow-md rounded-lg p-8 mt-6">
-  <h2 class="text-2xl font-semibold text-white mb-4">Cadastrar Produto</h2>
-  
-  <form #produtoForm="ngForm" class="space-y-4">
-    
-    <div class="form-field">
-      <label for="nome" class="block text-sm font-medium text-gray-300">Nome:</label>
-      <input type="text" id="nome" name="nome" [(ngModel)]="produto!.nome!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
-    </div>
-    
-    <div class="form-field">
-      <label for="nomeLongo" class="block text-sm font-medium text-gray-300">Nome longo:</label>
-      <input type="text" id="nomeLongo" name="nomeLongo" [(ngModel)]="produto!.nomeLongo!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
-    </div>
-    
-    <div class="form-field">
-      <label for="descricao" class="block text-sm font-medium text-gray-300">Descrição:</label>
-      <input type="text" id="descricao" name="descricao" [(ngModel)]="produto!.descricao!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
-    </div>
-    
-    <div class="form-field">
-      <label for="valorCompra" class="block text-sm font-medium text-gray-300">Custo:</label>
-      <input type="number" id="valorCompra" name="valorCompra" [(ngModel)]="produto!.valorCompra" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
-    </div>
-    
-    <div class="form-field">
-      <label for="preco" class="block text-sm font-medium text-gray-300">Preço:</label>
-      <input type="number" id="preco" name="preco" [(ngModel)]="produto!.preco!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
-    </div>
-    
-    <div class="form-field">
-      <label for="estoque" class="block text-sm font-medium text-gray-300">Estoque Inicial:</label>
-      <input type="number" id="estoque" name="estoque" [(ngModel)]="produto!.estoque!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
-    </div>
-    
-    <div class="form-field">
-      <label for="estoqueMinimo" class="block text-sm font-medium text-gray-300">Estoque Minimo:</label>
-      <input type="number" id="estoqueMinimo" name="estoqueMinimo" [(ngModel)]="produto!.estoqueMinimo!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
-    </div>
+<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+  <div class="relative py-3 sm:max-w-4xl sm:mx-auto"> <!-- Aumentei a largura máxima -->
+    <div class="relative p-4 py-10 bg-white mx-8 shadow rounded-3xl sm:p-10 md:p-10">
+      <div class="max-w-9xl mx-auto">
+        <div class="flex items-center space-x-5">
+          <div class="h-14 w-14 bg-yellow-200 rounded-full flex justify-center items-center text-yellow-500 text-2xl font-mono">i</div>
+          <div class="block pl-2 font-semibold text-xl self-start text-gray-700">
+            <h2 class="leading-relaxed">Adicionar Produto</h2>
+            <p class="text-sm text-gray-500 font-normal leading-relaxed">Preencha os detalhes do novo produto</p>
+          </div>
+        </div>
+        <form [formGroup]="productForm!" (ngSubmit)="onSubmit()" class="divide-y divide-gray-200 mt-6">
+          <div class="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-6"> <!-- Grid para duas colunas -->
 
-    <div class="form-field">
-      <label for="codigo" class="block text-sm font-medium text-gray-300">Código do Produto:</label>
-      <input type="text" id="codigo" name="codigo" [(ngModel)]="produto!.codigo!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
-    </div>
+            <div class="flex flex-col">
+              <label class="leading-loose">Nome</label>
+              <input type="text" formControlName="nome" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md text-gray-600" placeholder="Nome do produto">
+            </div>
 
-    <div class="form-field">
-      <label for="codigoBarras" class="block text-sm font-medium text-gray-300">Código de Barras:</label>
-      <input type="text" id="codigoBarras" name="codigoBarras" [(ngModel)]="produto!.codigoBarras!" required class="mt-1 block w-full p-2 border border-gray-600 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 bg-gray-700 text-white sm:text-sm">
+            <div class="flex flex-col">
+              <label class="leading-loose">Nome Longo</label>
+              <input type="text" formControlName="nomeLongo" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md text-gray-600" placeholder="Nome longo do produto">
+            </div>
+
+            <div class="flex flex-col md:col-span-2"> <!-- Ocupa duas colunas -->
+              <label class="leading-loose">Descrição</label>
+              <textarea formControlName="descricao" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md text-gray-600" placeholder="Descrição do produto"></textarea>
+            </div>
+
+            <div class="flex flex-col">
+              <label class="leading-loose">Estoque</label>
+              <input type="number" formControlName="estoque" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md text-gray-600" placeholder="Quantidade em estoque">
+            </div>
+
+            <div class="flex flex-col">
+              <label class="leading-loose">Estoque Mínimo</label>
+              <input type="number" formControlName="estoqueMinimo" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md text-gray-600" placeholder="Estoque mínimo">
+            </div>
+
+            <div class="flex flex-col">
+              <label class="leading-loose">Valor de Compra</label>
+              <input type="number" formControlName="valorCompra" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md text-gray-600" placeholder="Valor de compra">
+            </div>
+
+            <div class="flex flex-col">
+              <label class="leading-loose">Preço de Venda</label>
+              <input type="number" formControlName="preco" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md text-gray-600" placeholder="Preço de venda">
+            </div>
+
+            <div class="flex flex-col">
+              <label class="leading-loose">ID do Fornecedor</label>
+              <input type="number" formControlName="idFornecedor" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md text-gray-600" placeholder="ID do fornecedor">
+            </div>
+
+            <div class="flex flex-col">
+              <label class="leading-loose">ID da Marca</label>
+              <input type="number" formControlName="idMarca" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md text-gray-600" placeholder="ID da marca">
+            </div>
+
+            <div class="flex flex-col">
+              <label class="leading-loose">Código</label>
+              <input type="text" formControlName="codigo" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md text-gray-600" placeholder="Código do produto">
+            </div>
+
+            <div class="flex flex-col">
+              <label class="leading-loose">Código de Barras</label>
+              <input type="text" formControlName="codigoBarras" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md text-gray-600" placeholder="Código de barras">
+            </div>
+
+            <div class="flex flex-col md:col-span-2 p-2"> <!-- Ocupa duas colunas -->
+              <label class="leading-loose">Categorias</label>
+              <div class="mt-2 grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div *ngFor="let category of categories" class="flex items-start">
+                  <div class="flex items-center h-5">
+                    <input [id]="'category-' + category.id" type="checkbox" (change)="onCategoryChange(category.id!, true)" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                  </div>
+                  <div class="ml-3 text-sm">
+                    <label [for]="'category-' + category.id" class="font-medium text-gray-700">{{ category.nome }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="pt-4 flex items-center space-x-4">
+            <button (click)="voltarPagina()" type="button" class="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none">
+              <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg> Cancelar
+            </button>
+            <button type="submit" class="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Criar</button>
+          </div>
+
+        </form>
+      </div>
     </div>
-    
-    <div class="flex justify-end space-x-4">
-      <button mat-flat-button color="warn" (click)="cancelar()" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">
-        Cancelar
-      </button>
-      <button mat-flat-button color="primary" type="submit" (click)="adicionarProduto()" class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600">
-        Cadastrar
-      </button>
-    </div>
-  </form>
+  </div>
 </div>
