@@ -11,7 +11,7 @@ export class Produto {
   // cor?: string;
   estoque?: number;
   estoqueMinimo?: number;
-  img?: string[];
+  img?: File[];
   categorias?: Categoria[];
   marca?: Marca;
   // idCor?: number;
@@ -19,7 +19,7 @@ export class Produto {
   codigoBarras?: string;
   idFornecedor?: number;
   idMarca?: number;
-  idCategoria?: number;
+  idCategoria?: number[];
 
   constructor(formData: any) {
     this.nome = formData.nome;

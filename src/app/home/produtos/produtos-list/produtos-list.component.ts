@@ -37,11 +37,11 @@ export class ProdutosListComponent implements OnInit{
     })
   }
   editar(id:number) {
-    this.router.navigate([`/produto/edit/${id}`]);
+    this.router.navigate([`/produto/form/${id}`]);
   }
 
   irParaNewProduto() {
-    this.router.navigate(['/produto/new']);
+    this.router.navigate(['/produto/form/']);
   }
 
   paginar(event: PageEvent): void {
