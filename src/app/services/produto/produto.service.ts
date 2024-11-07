@@ -47,11 +47,21 @@ export class ProdutoService {
   }
 
   getById(id: number): Observable<Produto> {
+    const url = `${this.apiUrl}/admin/${id}`;
+    return this.httpClient.get<Produto>(url, this.httpOptions).pipe(
+      tap(produtos => console.log(produtos)));
+  }
+
+  getByIdAdmin(id: number): Observable<Produto> {
     const url = `${this.apiUrl}/${id}`;
-    return this.httpClient.get<Produto>(url, this.httpOptions);
+    return this.httpClient.get<Produto>(url, this.httpOptions).pipe(
+      tap(produtos => console.log(produtos)));
   }
 
   update(id: number, p: Produto): Observable<any> {
+    console.log('---------------');
+    console.log(p);
+    console.log('---------------');
     const url = `${this.apiUrl}/${id}`;
     return this.httpClient.put(url, p, this.httpOptions);
   }

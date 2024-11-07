@@ -24,7 +24,7 @@ export class CategoriaService {
       tap(categorias => console.log(categorias))
     );
   }
-  listSize(){
+  listSize(){ 
     return this.httpClient.get<number>(`${this.apiUrl}/size`, this.httpOptions).pipe(
       tap(categoriaSize => console.log(categoriaSize))
     );

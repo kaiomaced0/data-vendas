@@ -10,6 +10,7 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatOption, MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatButton } from '@angular/material/button';
 import { MatProgressBar } from '@angular/material/progress-bar';
+import { CategoriaService } from '../../../services/categoria/categoria.service';
 
 @Component({
   selector: 'app-form-produto',
@@ -23,12 +24,8 @@ export class FormProdutoComponent implements OnInit {
   uploadPercent: number | undefined;
   productForm?: FormGroup;
   productData?: Produto;
-  categories: Categoria[] = [
-    { id: 1, nome: 'Eletrônicos' },
-    { id: 2, nome: 'Roupas' },
-    { id: 3, nome: 'Alimentos' },
-    { id: 4, nome: 'Livros' }
-  ];
+  categories?: Categoria[];
+  selectedCategories: (number | undefined)[] = [];
   productId: number | null = null;
 
   constructor(
@@ -37,8 +34,9 @@ export class FormProdutoComponent implements OnInit {
     private router: Router,
     private service: ProdutoService,
     private location: Location,
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private categoriaService: CategoriaService
+  ) { }
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
@@ -50,53 +48,63 @@ export class FormProdutoComponent implements OnInit {
       preco: [null, [Validators.required, Validators.min(0)]],
       idFornecedor: [null, Validators.required],
       estoqueMinimo: [null, [Validators.required, Validators.min(0)]],
-      idMarca: [null, Validators.required],
+      idMarca: [null],
       codigo: [''],
       codigoBarras: [''],
       idCategoria: this.fb.array([]),
       img: this.fb.array([])
     });
+    this.loadCategories();
 
     // Verificar se estamos em modo de edição
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id) {
         this.productId = +id;
-        this.loadProductData(this.productId);
+        this.loadProductData();
       }
     });
   }
 
-  // Carrega os dados do produto existente para edição
-  loadProductData(id: number): void {
-    this.service.getById(id).subscribe((produto) => {
-      this.productData = produto;
+
+  loadCategories(): void {
+    this.categoriaService.list(1, 500).subscribe((categorias: Categoria[]) => {
+      this.categories = categorias;
+    });
+  }
+
+  loadProductData(): void {
+    this.service.getById(this.productId!).subscribe((produto: Produto) => {
       this.productForm!.patchValue(produto);
-      this.img = produto.img || []; // Se tiver imagens salvas, adiciona ao array
 
-      // Preenche as categorias
-      if (produto.idCategoria) {
-        produto.idCategoria.forEach(categoryId => {
-          this.idCategoria.push(this.fb.control(categoryId));
-        });
-      }
+      // Preenche o FormArray de categorias com os IDs correspondentes
+      const idCategoriaArray = this.productForm!.get('idCategoria') as FormArray;
+      this.selectedCategories = produto.categorias!.map(cat => cat.id); // Pega os IDs das categorias
+      this.selectedCategories.forEach(id => {
+        idCategoriaArray.push(this.fb.control(id)); // Adiciona cada ID ao FormArray
+      });
     });
   }
 
-  // Getter para facilitar o acesso ao FormArray de categorias
+  get categoriasArray(): FormArray {
+    return this.productForm!.get('categorias') as FormArray;
+  }
+
   get idCategoria(): FormArray {
     return this.productForm!.get('idCategoria') as FormArray;
   }
 
-  onCategoryChange(categoryId: number, isChecked: boolean): void {
+  onCategoryChange(category: Categoria, isChecked: boolean): void {
+    const categoriasArray = this.categoriasArray;
+
     if (isChecked) {
-      this.idCategoria.push(this.fb.control(categoryId));
+      categoriasArray.push(this.fb.control(category));
     } else {
-      const index = this.idCategoria.controls.findIndex(
-        (control) => control.value === categoryId
+      const index = categoriasArray.controls.findIndex(
+        (control) => control.value.id === category.id
       );
       if (index >= 0) {
-        this.idCategoria.removeAt(index);
+        categoriasArray.removeAt(index);
       }
     }
   }
@@ -119,6 +127,7 @@ export class FormProdutoComponent implements OnInit {
 
   onSubmit(): void {
     if (this.productForm!.valid) {
+      
       this.productData = new Produto(this.productForm!.value);
 
       if (this.productId) {
